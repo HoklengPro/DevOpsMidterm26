@@ -13,6 +13,8 @@ pipeline {
 
     environment {
         TASK4_MAIL_SUBJECT_PREFIX = 'DevOpsMidterm26-Hokleng'
+        // Public Midterm page (nginx); override in the job if your instructor uses another URL.
+        DEPLOY_PUBLIC_URL = 'http://178.128.93.188/Midterm-2026/CHHEANG_HOKLENG/'
         DB_HOST = 'localhost'
         DB_PORT = '15432'
         DB_NAME = 'springtest'
@@ -51,8 +53,10 @@ pipeline {
 
         success {
             emailext(
-                subject: "${env.TASK4_MAIL_SUBJECT_PREFIX} — SUCCESS #${env.BUILD_NUMBER}",
+                subject: "${env.TASK4_MAIL_SUBJECT_PREFIX} — SUCCESS #${env.BUILD_NUMBER} | ${env.DEPLOY_PUBLIC_URL}",
                 body: """Task 4: build SUCCEEDED.
+
+Website (deploy): ${env.DEPLOY_PUBLIC_URL}
 
 Job: ${env.JOB_NAME}
 Tag: ${env.TASK4_MAIL_SUBJECT_PREFIX}
