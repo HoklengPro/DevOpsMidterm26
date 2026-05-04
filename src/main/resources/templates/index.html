@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Task 3 – Spring Demo</title>
+</head>
+<body>
+<main>
+    <h1 th:text="${ping}">Status</h1>
+    <h2>Saved rows (PostgreSQL)</h2>
+    <ul>
+        <li th:each="m : ${messages}" th:text="${m.text}"></li>
+    </ul>
+</main>
+</body>
+</html>

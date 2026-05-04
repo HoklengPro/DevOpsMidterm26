@@ -1,0 +1,22 @@
+
+Question 3
+Not yet answered
+Marked out of 20.00
+Flag question
+Question text
+Setup Springboot web project with dependencies (https://start.spring.io):
+
+Spring Boot Dev Tools
+Lombok
+Spring Web
+Thymeleaf
+Spring Data JPA
+PostgreSQL Driver or MySQL Driver
+You can use either Maven or Gradle as dependencies manager and build tool.
+Then configure Springboot to connect to PostgreSQL or MySQL database.
+
+Screenshots to submit:
+
+the Spring initializr interface.
+Database configuration
+Successful build and run Springboot locally

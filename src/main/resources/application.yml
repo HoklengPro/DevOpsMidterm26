@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: task3-spring-demo
+
+  datasource:
+    # personal-jenkins compose: spring-db published as localhost:15432 on the Mac (see personal-jenkins docker-compose.yml)
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:15432}/${DB_NAME:springtest}
+    username: ${DB_USER:spring}
+    password: ${DB_PASSWORD:spring}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port: ${SERVER_PORT:9080}
+
+logging:
+  level:
+    org.hibernate.SQL: info

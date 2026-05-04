@@ -1,0 +1,18 @@
+Task 3 – if Spring shows "Error starting ApplicationContext"
+
+1) Port 9080 must be free — only ONE app at a time:
+   lsof -iTCP:9080 -sTCP:LISTEN
+   If something is listed, stop it:
+   - Podman: podman stop task3-spring-maven
+   - Or: kill the java PID from lsof output
+
+2) PostgreSQL must be up on the host port in application.yml (default 15432):
+   podman ps | grep postgres-spring-personal
+   Start personal-jenkins compose if needed.
+
+3) Rebuild after pom changes:
+   mvn clean package -DskipTests
+   java -jar target/task3-spring-demo-0.0.1-SNAPSHOT.jar
+
+Use another port temporarily:
+   SERVER_PORT=9081 java -jar target/task3-spring-demo-0.0.1-SNAPSHOT.jar
