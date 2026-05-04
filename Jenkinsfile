@@ -5,12 +5,14 @@
 pipeline {
     agent { label 'spring' }
 
+    // Default subject tag matches DevOpsMidterm26; set job env TASK4_MAIL_SUBJECT_PREFIX for other repos (e.g. MIdtermDevOps-Hokleng).
+
     options {
         timestamps()
     }
 
     environment {
-        TASK4_MAIL_SUBJECT_PREFIX = 'MIdtermDevOps-Hokleng'
+        TASK4_MAIL_SUBJECT_PREFIX = 'DevOpsMidterm26-Hokleng'
         DB_HOST = 'localhost'
         DB_PORT = '15432'
         DB_NAME = 'springtest'
