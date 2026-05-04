@@ -49,6 +49,23 @@ pipeline {
             archiveArtifacts artifacts: '**/target/*.jar', allowEmptyArchive: true, fingerprint: true
         }
 
+        success {
+            emailext(
+                subject: "${env.TASK4_MAIL_SUBJECT_PREFIX} — SUCCESS #${env.BUILD_NUMBER}",
+                body: """Task 4: build SUCCEEDED.
+
+Job: ${env.JOB_NAME}
+Tag: ${env.TASK4_MAIL_SUBJECT_PREFIX}
+Build number: ${env.BUILD_NUMBER}
+Build URL: ${env.BUILD_URL}
+Console: ${env.BUILD_URL}console
+
+Check build Artifacts for the packaged JAR.
+""",
+                to: env.TASK4_NOTIFY_EMAIL ?: '$DEFAULT_RECIPIENTS',
+            )
+        }
+
         failure {
             emailext(
                 subject: "${env.TASK4_MAIL_SUBJECT_PREFIX} — FAILED #${env.BUILD_NUMBER}",
